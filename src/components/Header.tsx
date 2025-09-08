@@ -33,7 +33,39 @@ export default function HeaderComponent({
             aria-label="Toggle navigation"
           />
         )}
-        <Text
+
+}: HeaderComponentProps) {
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const isDark = colorScheme === "dark";
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  return (
+
+    <Group p="md" justify="space-between">
+    <Group>
+      {isMobile && (
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          aria-label="Toggle navigation"
+        />
+      )}
+
+        <Icon order ={฿} 
+         </Group>
+         <Group gap={5}>
+           <ActionIcon
+             variant="filled"
+             color={isDark ? "yellow" : "blue"}
+             onClick={toggleColorScheme}
+             size="lg"
+             aria-label={isDark ? "Light mode" : "Dark mode"}
+           >
+             {isDark ? <Icon size={20} /> : <Icon size={20} />}
+           </ActionIcon>
+         </Group>
+       </Group>
+       
+       <Text
           size="xl"
           fw={900}
           variant="gradient"
